@@ -1,6 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,6 +13,13 @@ export default function Contact() {
   const contentRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
+
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
 
   useLayoutEffect(() => {
     if (
@@ -73,74 +80,79 @@ export default function Contact() {
         <div className="absolute right-0 bottom-0 w-80 h-80 bg-white/10 blur-[140px] rounded-full" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-28 md:py-32 space-y-12">
-        <div ref={contentRef} className="space-y-5 text-center">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-xs uppercase tracking-[0.25em] text-white/70">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 sm:py-32 md:py-36 space-y-16">
+        <div ref={contentRef} className="space-y-6 text-center">
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-sm uppercase tracking-[0.25em] text-white/70 font-medium">
             <span className="h-px w-8 bg-white/40" />
             Contact Us
             <span className="h-px w-8 bg-white/40" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
             Let&apos;s build the future of mobility together
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl md:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
             Affordable EVs, beautiful design, and real-world efficiency. Share your vision or visit us to experience
             Ascendance firsthand.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
           <div
             ref={formRef}
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-7 md:p-8 backdrop-blur-sm shadow-lg shadow-black/25"
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 backdrop-blur-sm shadow-lg shadow-black/25"
           >
-            <p className="text-xl font-semibold text-white uppercase mb-4">Get in touch</p>
-            <form className="space-y-4">
+            <p className="text-2xl font-bold text-white uppercase mb-6">Get in touch</p>
+            <div className="space-y-5">
               <div className="space-y-2">
-                <label htmlFor="name" className="text-sm text-white/80">Name</label>
+                <label htmlFor="name" className="text-base text-white/80 font-medium">Name</label>
                 <input
                   id="name"
                   type="text"
                   placeholder="Your name"
-                  className="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-4 text-base text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm text-white/80">Email</label>
+                <label htmlFor="email" className="text-base text-white/80 font-medium">Email</label>
                 <input
                   id="email"
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-4 text-base text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm text-white/80">Message</label>
+                <label htmlFor="message" className="text-base text-white/80 font-medium">Message</label>
                 <textarea
                   id="message"
                   rows={4}
                   placeholder="Tell us about your project or questions..."
-                  className="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-4 text-base text-white placeholder:text-white/50 focus:outline-none focus:border-white/40"
                 />
               </div>
               <button
-                type="submit"
-                className="mt-2 inline-flex items-center justify-center w-full sm:w-auto rounded-xl bg-white text-black px-6 py-3 font-semibold hover:bg-white/90 transition"
+                onClick={handleSubmit}
+                className="mt-2 inline-flex items-center justify-center w-full sm:w-auto rounded-xl bg-white text-black px-8 py-4 text-base font-bold hover:bg-white/90 transition"
               >
                 Send Message
               </button>
-            </form>
+            </div>
           </div>
 
           <div
             ref={infoRef}
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-7 md:p-8 backdrop-blur-sm shadow-lg shadow-black/25 space-y-4 flex flex-col"
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 backdrop-blur-sm shadow-lg shadow-black/25 space-y-5 flex flex-col"
           >
-            <p className="text-xl font-semibold text-white">Location</p>
-            <p className="text-white/80 leading-relaxed">Mohammed VI Polytechnic University</p>
+            <p className="text-2xl font-bold text-white">Location</p>
+            <p className="text-lg text-white/85 leading-relaxed">Mohammed VI Polytechnic University</p>
             <div className="mt-4 w-full overflow-hidden rounded-xl border border-white/10 bg-black/30 flex-1">
-              <div className="relative w-full h-full min-h-[260px]">
-               
+              <div className="relative w-full h-full min-h-[280px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6751.1618787053885!2d-7.9365134!3d32.21552085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdaf7b03f2634597%3A0x2a17b5da81219cfd!2sCampus%20universitaire%20UM6P%20Benguerir!5e0!3m2!1sen!2sma!4v1763287290130!5m2!1sen!2sma" 
                   width="100%"

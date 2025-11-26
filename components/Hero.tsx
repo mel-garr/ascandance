@@ -1,7 +1,7 @@
 'use client'
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { useRouter } from 'next/navigation'; // <--- import router
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -9,14 +9,7 @@ export default function Hero() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const specsRef = useRef<HTMLDivElement>(null);
-  const router = useRouter(); // <--- initialize router
-
-  const scrollToContent = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth',
-    });
-  };
+  const router = useRouter();
 
   useLayoutEffect(() => {
     if (
@@ -95,49 +88,48 @@ export default function Hero() {
     >
       {/* Background */}
       <div ref={backgroundRef} className="absolute inset-0 z-0 will-change-transform">
-        <div className="w-full h-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/Herosection.webp)' }}>
-          <img src="/Herosection.webp" alt="Ascendance Vehicle" className="w-full h-full object-cover object-center opacity-0" />
+        <div className="w-full h-full bg-cover bg-no-repeat bg-[position:25%_center] md:bg-center" style={{ backgroundImage: 'url(/Herosection.jpeg)' }}>
+          <img src="/Herosection.webp" alt="Ascendance Vehicle" className="w-full h-full object-cover object-[25%_center] md:object-center opacity-0" />
         </div>
         <div ref={overlayRef} className="absolute inset-0 bg-black/10"></div>
       </div>
 
-      {/* Title */}
-      <div ref={titleRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center w-full px-4 sm:px-6">
-        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl uppercase font-semibold mb-3 tracking-tight drop-shadow-lg">
-          Semeta-TRT
-        </h1>
-        <p className="text-white text-base sm:text-lg md:text-2xl lg:text-3xl font-light tracking-wide drop-shadow-md">
-          Our Featured Electric Vehicles
-        </p>
-      </div>
-
-      {/* Specs & Button */}
+      {/* Bottom Specs & Center Content */}
       <div ref={specsRef} className="absolute bottom-0 left-0 right-0 z-10 pb-8 sm:pb-12 md:pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 text-center mb-6 sm:mb-8">
-            <div>
-              <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">350mi</p>
-              <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Range (EPA est.)</p>
-            </div>
-            <div>
-              <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">3.1s</p>
-              <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">0-60 mph*</p>
-            </div>
-            <div>
-              <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">150mph</p>
-              <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Top Speed</p>
-            </div>
+        <div className="flex items-center justify-between w-full relative">
+
+          {/* Left Column */}
+          <div className="text-left ml-4 sm:ml-8 md:ml-16 lg:ml-[10rem]">
+            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">3.1s</p>
+            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light mb-2">0-60 mph*</p>
+            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">350mi</p>
+            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Range (EPA est.)</p>
           </div>
 
-          {/* CTA Button */}
-          <div className="flex justify-center">
+          {/* Center Column (Title + Button) */}
+          <div ref={titleRef} className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl uppercase font-semibold tracking-tight drop-shadow-lg whitespace-nowrap">
+              Semeta-TRT
+            </h1>
+            <p className="text-white text-sm sm:text-lg md:text-2xl lg:text-3xl font-light tracking-wide drop-shadow-md text-center mt-2 mb-4 px-2">
+              Urban Mobility Tilting Reverse Trike
+            </p>
             <button
-              onClick={() => router.push('/configurator')} // <--- navigate to configurator
-              className="px-12 sm:px-16 md:px-20 py-2.5 sm:py-3 bg-white/10 backdrop-blur-sm text-white text-xs sm:text-sm font-semibold border border-white/30 rounded hover:bg-white/20 transition-all uppercase tracking-wider"
+              onClick={() => router.push('/configurator')}
+              className="px-8 sm:px-12 md:px-16 lg:px-20 py-2.5 sm:py-3 bg-white/10 backdrop-blur-sm text-white text-xs sm:text-sm font-semibold border border-white/30 rounded hover:bg-white/20 transition-all uppercase tracking-wider"
             >
-              Build Your Vision
+              Configure Your Semeta Ev
             </button>
           </div>
+
+          {/* Right Column */}
+          <div className="text-right mr-4 sm:mr-8 md:mr-16 lg:mr-[10rem]">
+            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">150mph</p>
+            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light mb-2">Top Speed</p>
+            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">+$5,000</p>
+            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Vehicle starting price</p>
+          </div>
+
         </div>
       </div>
     </section>

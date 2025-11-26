@@ -10,6 +10,7 @@ import Footer from '@/components/Footer';
 import Technology from '@/components/Technology';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
+import AboutUs from '@/components/SecondData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +80,9 @@ export default function Home() {
       </div>
       <div className="relative z-30 bg-black">
         <About />
+      </div>
+      <div className="relative z-30 bg-black">
+        <AboutUs />
       </div>
       <div className="relative z-30 bg-black">
         <Contact />
