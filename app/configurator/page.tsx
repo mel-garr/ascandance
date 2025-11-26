@@ -95,32 +95,31 @@ export default function EveConfiguratorSimple() {
 
   return (
     <div className="relative w-screen h-screen bg-black text-white overflow-hidden">
-      {/* Navbar with Logo */}
-      <nav className="absolute top-0 left-0 right-0 z-50 h-16 md:h-20 bg-black/50 backdrop-blur-sm">
-        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center justify-between h-full">
-            {/* Logo */}
-            <a href="/" className="hover:opacity-80 transition-opacity">
-              <img 
-                src="/logoWhite.png" 
-                alt="Ascendance" 
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain" 
-              />
-            </a>
-            
-            {/* Back to Home Link */}
-            <a 
-              href="/" 
-              className="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
-            >
-              ← Back to Home
-            </a>
-          </div>
-        </div>
-      </nav>
-
       {/* CAR IMAGE WITH NAVIGATION - FULL SCREEN */}
-      <div className="absolute inset-0 pt-16 md:pt-20">
+      <div className="absolute inset-0">
+        {/* Navbar with Logo - Overlaying the image */}
+        <nav className="absolute top-0 left-0 right-0 z-50 h-16 md:h-20 bg-black/20 backdrop-blur-sm">
+          <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div className="flex items-center justify-between h-full">
+              {/* Logo */}
+              <a href="/" className="hover:opacity-80 transition-opacity">
+                <img 
+                  src="/logoWhite.png" 
+                  alt="Ascendance" 
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain" 
+                />
+              </a>
+              
+              {/* Back to Home Link */}
+              <a 
+                href="/" 
+                className="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
+              >
+                ← Back to Home
+              </a>
+            </div>
+          </div>
+        </nav>
         {/* Click areas for navigation */}
         <div className="absolute left-0 w-1/2 h-full cursor-pointer z-10" onClick={prevFrame}></div>
         <div className="absolute right-0 w-1/2 h-full cursor-pointer z-10" onClick={nextFrame}></div>
