@@ -88,9 +88,50 @@ export default function Hero() {
     >
       {/* Background */}
       <div ref={backgroundRef} className="absolute inset-0 z-0 will-change-transform">
-        <div className="w-full h-full bg-cover bg-no-repeat bg-[position:25%_center] md:bg-center" style={{ backgroundImage: 'url(/Herosection.jpeg)' }}>
-          <img src="/Herosection.webp" alt="Ascendance Vehicle" className="w-full h-full object-cover object-[25%_center] md:object-center opacity-0" />
+        {/* Mobile Image */}
+        <div
+          className="
+            md:hidden
+            w-full h-full 
+            bg-cover
+            bg-no-repeat 
+            bg-center
+          "
+          style={{ backgroundImage: 'url(/mobile2.png)' }}
+        >
+          <img
+            src="/mobile2.png"
+            alt="Ascendance Vehicle"
+            className="w-full h-full object-cover object-center opacity-0"
+          />
         </div>
+
+        {/* Desktop Image */}
+        <div
+          className="
+            hidden md:block
+            w-full h-full 
+            bg-contain
+            sm:bg-contain
+            md:bg-cover
+            bg-no-repeat 
+            bg-center
+          "
+          style={{ backgroundImage: 'url(/Herosection.jpeg)' }}
+        >
+          <img
+            src="/Herosection.webp"
+            alt="Ascendance Vehicle"
+            className="
+              w-full h-full 
+              object-contain
+              md:object-cover
+              object-center 
+              opacity-0
+            "
+          />
+        </div>
+
         <div ref={overlayRef} className="absolute inset-0 bg-black/10"></div>
       </div>
 
@@ -106,7 +147,7 @@ export default function Hero() {
             <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Range (EPA est.)</p>
           </div>
 
-          {/* Center Column (Title + Button) */}
+          {/* Center Column */}
           <div ref={titleRef} className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
             <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl uppercase font-semibold tracking-tight drop-shadow-lg whitespace-nowrap">
               Semeta-TRT
