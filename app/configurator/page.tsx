@@ -113,7 +113,7 @@ export default function EveConfiguratorSimple() {
         color === "red"
           ? `/red/red${frame}.png`
           : color === "gold"
-          ? `/gold/GOLD${frame}.png`
+          ? `/gold/GOLD${frame}.jpg`
           : `/white/white${frame}.png`;
 
       const res = await fetch("/api/sendEmail", {
@@ -141,7 +141,7 @@ export default function EveConfiguratorSimple() {
     color === "red"
       ? `/red/red${frame}.png`
       : color === "gold"
-      ? `/gold/GOLD${frame}.png`
+      ? `/gold/GOLD${frame}.jpg`
       : `/white/white${frame}.png`;
 
   const getIcon = (key: string) => {
@@ -184,6 +184,14 @@ export default function EveConfiguratorSimple() {
           </div>
         </nav>
 
+        {/* Background image layer - only for mobile */}
+        <div className="md:hidden absolute inset-0 z-0">
+          <img 
+            src={imgSrc} 
+            className="w-full h-full object-cover select-none pointer-events-none blur-sm opacity-50" 
+          />
+        </div>
+
         {/* Click areas for navigation */}
         <div className="absolute left-0 w-1/2 h-full cursor-pointer z-10" onClick={(e) => { e.stopPropagation(); prevFrame(); }}></div>
         <div className="absolute right-0 w-1/2 h-full cursor-pointer z-10" onClick={(e) => { e.stopPropagation(); nextFrame(); }}></div>
@@ -216,14 +224,10 @@ export default function EveConfiguratorSimple() {
           </div>
         )}
 
-        {/* Frame counter */}
-        <div className="absolute top-20 md:top-24 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-black/50 backdrop-blur-sm rounded-full text-white text-sm">
-          {frame} / {IMAGES_COUNT}
-        </div>
-
+        {/* Main car image - on top for mobile, normal for desktop */}
         <img 
           src={imgSrc} 
-          className="w-full h-full object-cover select-none pointer-events-none scale-110 sm:scale-100" 
+          className="w-full h-full object-contain md:object-cover select-none pointer-events-none relative z-10" 
         />
       </div>
 
