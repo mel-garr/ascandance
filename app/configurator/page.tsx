@@ -113,7 +113,7 @@ export default function EveConfiguratorSimple() {
         color === "red"
           ? `/red/red${frame}.png`
           : color === "gold"
-          ? `/gold/GOLD${frame}.jpg`
+          ? `/gold/GOLD${frame}.png`
           : `/white/white${frame}.png`;
 
       const res = await fetch("/api/sendEmail", {
@@ -141,7 +141,7 @@ export default function EveConfiguratorSimple() {
     color === "red"
       ? `/red/red${frame}.png`
       : color === "gold"
-      ? `/gold/GOLD${frame}.jpg`
+      ? `/gold/GOLD${frame}.png`
       : `/white/white${frame}.png`;
 
   const getIcon = (key: string) => {
