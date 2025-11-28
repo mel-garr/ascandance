@@ -76,7 +76,7 @@ export default function AboutUs() {
         <div
           className="w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/AboutUs.jpg)',
+            backgroundImage: 'url(/Herosection.webp)',
             backgroundPosition: 'center center',
           }}
         >
