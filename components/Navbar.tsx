@@ -100,10 +100,10 @@ export default function Navbar({ alwaysVisible = false, darkText = false }: Navb
 
           {/* Links */}
           <div ref={linksRef} className="hidden lg:flex items-center justify-center gap-6 xl:gap-10">
+            <a href="/" style={{ color: linkColor }} className="text-sm font-medium transition-opacity duration-200 whitespace-nowrap hover:opacity-70">Home</a>
             <a href="/configurator" style={{ color: linkColor }} className="text-sm font-medium transition-opacity duration-200 whitespace-nowrap hover:opacity-70">Configurator</a>
-            <a href="/#tech" style={{ color: linkColor }} className="text-sm font-medium transition-opacity duration-200 whitespace-nowrap hover:opacity-70">Technology</a>
-            <a href="/#about" style={{ color: linkColor }} className="text-sm font-medium transition-opacity duration-200 whitespace-nowrap hover:opacity-70">About Us</a>
-            <a href="/#contact" style={{ color: linkColor }} className="text-sm font-medium transition-opacity duration-200 whitespace-nowrap hover:opacity-70">Contact</a>
+            <a href="/gallery" style={{ color: linkColor }} className="text-sm font-medium transition-opacity duration-200 whitespace-nowrap hover:opacity-70">Gallery</a>
+            <a href="/#contact" style={{ color: linkColor }} className="text-sm font-medium transition-opacity duration-200 whitespace-nowrap hover:opacity-70">Contact Us</a>
           </div>
 
           {/* CTA Button */}
@@ -141,10 +141,10 @@ export default function Navbar({ alwaysVisible = false, darkText = false }: Navb
         {isMenuOpen && (
           <div className="lg:hidden border-t border-gray-200 bg-white">
             <div className="py-4 px-2 flex flex-col gap-2">
+              <a href="/" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">Home</a>
               <a href="/configurator" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">Configurator</a>
-              <a href="/#tech" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">Technology</a>
-              <a href="/#about" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">About Us</a>
-              <a href="/#contact" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">Contact</a>
+              <a href="/gallery" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">Gallery</a>
+              <a href="/#contact" onClick={() => setIsMenuOpen(false)} className="px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition-colors">Contact Us</a>
               <div className="pt-2">
                 <button onClick={() => { router.push('/configurator'); setIsMenuOpen(false); }} className="w-full px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-all text-sm font-semibold">Order Now</button>
               </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Gauge, Car, Fan, Cpu, Wrench, Cog, X, Menu, Home } from "lucide-react";
+import { Gauge, Car, Fan, Cpu, Wrench, Cog, X } from "lucide-react";
+import Navbar from '@/components/Navbar';
 
 type OptionItem = { id: string; name: string; price?: number };
 type OptionCategory = { key: string; label: string; title: string; items: OptionItem[] };
@@ -158,32 +159,11 @@ export default function EveConfiguratorSimple() {
 
   return (
     <div className="relative w-screen h-screen bg-black text-white overflow-hidden" onClick={() => setActiveOption(null)}>
-      {/* CAR IMAGE WITH NAVIGATION - FULL SCREEN */}
-      <div className="absolute inset-0">
-        {/* Navbar with Logo - Overlaying the image */}
-        <nav className="absolute top-0 left-0 right-0 z-50 h-16 md:h-20 bg-black/20 backdrop-blur-sm">
-          <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <div className="flex items-center justify-between h-full">
-              {/* Logo */}
-              <a href="/" className="hover:opacity-80 transition-opacity">
-                <img 
-                  src="/logoWhite.png" 
-                  alt="Ascendance" 
-                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain" 
-                />
-              </a>
-              
-              {/* Back to Home Link */}
-              <a 
-                href="/" 
-                className="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
-              >
-                ← Back to Home
-              </a>
-            </div>
-          </div>
-        </nav>
+      {/* Use your existing Navbar */}
+      <Navbar alwaysVisible={true} darkText={false} />
 
+      {/* CAR IMAGE WITH NAVIGATION - FULL SCREEN */}
+      <div className="absolute inset-0 pt-16 md:pt-20">
         {/* Background image layer - only for mobile */}
         <div className="md:hidden absolute inset-0 z-0">
           <img 
