@@ -9,7 +9,7 @@ const galleryImages = [
   { id: 1, src: '/gallery/2.png', alt: 'Semeta-TRT Image 1' },
   { id: 2, src: '/gallery/3.png', alt: 'Semeta-TRT Image 2' },
   { id: 3, src: '/gallery/4.png', alt: 'Semeta-TRT Image 3' },
-  { id: 4, src: '/gallery/5.png', alt: 'Semeta-TRT Image 4' },
+  // { id: 4, src: '/gallery/5.png', alt: 'Semeta-TRT Image 4' },
   { id: 5, src: '/gallery/6.jpeg', alt: 'Semeta-TRT Image 5' },
   { id: 6, src: '/gallery/7.jpeg', alt: 'Semeta-TRT Image 6' },
   { id: 7, src: '/gallery/7.png', alt: 'Semeta-TRT Image 7' },
