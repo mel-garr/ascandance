@@ -141,9 +141,9 @@ export default function Hero() {
 
           {/* Left Column */}
           <div className="text-left ml-4 sm:ml-8 md:ml-16 lg:ml-[10rem]">
-            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">3.1s</p>
-            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light mb-2">0-60 mph*</p>
-            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">350mi</p>
+            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">4s</p>
+            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light mb-2">0-60 kph</p>
+            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">+350km</p>
             <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Range (EPA est.)</p>
           </div>
 
@@ -165,8 +165,8 @@ export default function Hero() {
 
           {/* Right Column */}
           <div className="text-right mr-4 sm:mr-8 md:mr-16 lg:mr-[10rem]">
-            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">150mph</p>
-            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light mb-2">Top Speed</p>
+            <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">150kph</p>
+            <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light mb-2">Software Region</p>
             <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">+$5,000</p>
             <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Vehicle starting price</p>
           </div>

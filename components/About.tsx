@@ -7,12 +7,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const points = [
-  '75% of car journeys are under 10km and usually solo.',
-  'We should not need a 3-ton vehicle for short trips.',
-  'Batteries trend below $100 per kWh—EVs must be affordable.',
-  'A sedan carries just the driver 90% of its life.',
-  'Affordable vehicles have no right to be ugly.',
-  'We configure performance to your budget: $5k—$30k+.',
+  '75% of car journeys are less than 10km and usually only with the driver. Do we really need a 3 Ton vehicle to make such journey?',
+  'Affordable Vehicles have absolutely no right to be Ugly.',
 ];
 
 export default function About() {
@@ -116,17 +112,17 @@ export default function About() {
         <div ref={contentRef} className="space-y-6 text-center">
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-sm uppercase tracking-[0.25em] text-white/70 font-medium">
             <span className="h-px w-8 bg-white/40" />
-            Our Vision
+            Why Semeta-TRT?
             <span className="h-px w-8 bg-white/40" />
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+          {/* <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
             Why <span className="text-white/80">Semeta-TRT</span>?
           </h2>
           <p className="text-xl sm:text-2xl md:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
             Ascendance EV designs beautiful, efficient mobility for how people really move—short,
             frequent trips that deserve lightweight, attainable electric vehicles without
             compromising on style.
-          </p>
+          </p> */}
         </div>
 
         <div

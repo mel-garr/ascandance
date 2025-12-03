@@ -121,22 +121,18 @@ export default function Technology() {
           </div>
 
           {/* Second Row of Specs */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center mb-6 sm:mb-8">
-            <div>
+       <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-center mb-6 sm:mb-8">
+            <div className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.5rem)]">
               <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">150 km/h</p>
               <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Top Speed</p>
             </div>
-            <div>
+            <div className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.5rem)]">
               <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">1-3 Wheel</p>
               <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Drive Options</p>
             </div>
-            <div>
-              <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">$5k-$20k</p>
-              <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Price Range</p>
-            </div>
-            <div>
+            <div className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.5rem)]">
               <p className="text-white text-xl sm:text-2xl md:text-3xl font-semibold mb-1 drop-shadow-md">Active Lean</p>
-              <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Enhanced Safety</p>
+              <p className="text-white/90 text-[10px] sm:text-xs md:text-sm font-light">Enhanced Cornering, Safety, stability, and smoothness</p>
             </div>
           </div>
           

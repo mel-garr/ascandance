@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Gauge, Car, Fan, Cpu, Wrench, Cog, X } from "lucide-react";
+import { Gauge, Battery, Wind, Armchair, Home, Palette, Video, Thermometer, Navigation } from "lucide-react";
 import Navbar from '@/components/Navbar';
 
 type OptionItem = { id: string; name: string; price?: number };
@@ -81,6 +81,34 @@ export default function EveConfiguratorSimple() {
         { id: "silverTint", name: "Silver Tint", price: 50 }
       ] 
     },
+    { 
+      key: "dashcam", 
+      label: "Dashcam", 
+      title: "Dashcam",
+      items: [
+        { id: "none", name: "None" }, 
+        { id: "premium", name: "Premium", price: 500 }
+      ] 
+    },
+    { 
+      key: "climate", 
+      label: "Climate Control", 
+      title: "Climate/Temperature Control",
+      items: [
+        { id: "none", name: "None" }, 
+        { id: "ac", name: "Air Conditioner", price: 250 },
+        { id: "heatedSeats", name: "Heated Seats", price: 200 }
+      ] 
+    },
+    { 
+      key: "driveAssist", 
+      label: "Drive Assist", 
+      title: "Drive Assist",
+      items: [
+        { id: "standard", name: "Classic Standard" }, 
+        { id: "premium", name: "Premium", price: 1500 }
+      ] 
+    },
   ];
 
   const [selections, setSelections] = useState<Map<string, string>>(
@@ -148,22 +176,24 @@ export default function EveConfiguratorSimple() {
   const getIcon = (key: string) => {
     switch(key) {
       case "powerDrive": return <Gauge size={24} />;
-      case "battery": return <Car size={24} />;
-      case "window": return <Fan size={24} />;
-      case "interior": return <Cpu size={24} />;
-      case "roof": return <Wrench size={24} />;
-      case "glass": return <Cog size={24} />;
+      case "battery": return <Battery size={24} />;
+      case "window": return <Wind size={24} />;
+      case "interior": return <Armchair size={24} />;
+      case "roof": return <Home size={24} />;
+      case "glass": return <Palette size={24} />;
+      case "dashcam": return <Video size={24} />;
+      case "climate": return <Thermometer size={24} />;
+      case "driveAssist": return <Navigation size={24} />;
       default: return null;
     }
   };
 
   return (
     <div className="relative w-screen h-screen bg-black text-white overflow-hidden" onClick={() => setActiveOption(null)}>
-      {/* Use your existing Navbar */}
-      <Navbar alwaysVisible={true} darkText={false} />
+      <Navbar />
 
       {/* CAR IMAGE WITH NAVIGATION - FULL SCREEN */}
-      <div className="absolute inset-0 pt-16 md:pt-20">
+      <div className="absolute inset-0 pt-32 pb-80 md:pt-20 md:pb-0">
         {/* Background image layer - only for mobile */}
         <div className="md:hidden absolute inset-0 z-0">
           <img 
@@ -213,27 +243,8 @@ export default function EveConfiguratorSimple() {
 
       {/* BOTTOM CONFIG SUMMARY WITH MOBILE BUTTONS ON TOP */}
       <div className="absolute bottom-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 z-40 md:w-3/4 max-w-4xl" onClick={(e) => e.stopPropagation()}>
-        {/* MOBILE CIRCULAR BUTTONS - ON TOP OF CONFIG CARD */}
-        <div className="md:hidden flex justify-center items-center gap-3 mb-3">
-          {OPTIONS.map((cat) => {
-            const isActive = activeOption === cat.key;
-            return (
-              <button
-                key={cat.key}
-                onClick={(e) => { e.stopPropagation(); setActiveOption(isActive ? null : cat.key); }}
-                className={`w-14 h-14 rounded-full flex items-center justify-center transition-all shadow-xl border-2 ${
-                  isActive 
-                    ? "bg-white text-black scale-110 border-white" 
-                    : "bg-white/30 backdrop-blur-md border-white/40 text-white"
-                }`}
-              >
-                {getIcon(cat.key)}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* MOBILE OPTIONS PANEL - SHOWS ABOVE BUTTONS */}
+        
+        {/* MOBILE OPTIONS PANEL - SHOWS WHEN OPTION SELECTED */}
         {activeOption && (
           <div className="md:hidden mb-3 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl">
             <div className="flex items-center justify-between mb-3">
@@ -244,7 +255,7 @@ export default function EveConfiguratorSimple() {
                 onClick={() => setActiveOption(null)}
                 className="w-8 h-8 flex items-center justify-center rounded-full bg-black/10 text-black"
               >
-                <X size={18} />
+                ✕
               </button>
             </div>
             <div className="space-y-2">
@@ -266,10 +277,12 @@ export default function EveConfiguratorSimple() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-medium">{item.name}</span>
-                      {item.price && (
+                      {item.price ? (
                         <span className="text-sm opacity-70">
                           +$ {item.price.toLocaleString()}
                         </span>
+                      ) : (
+                        <span className="text-sm opacity-70">$0.00</span>
                       )}
                     </div>
                   </button>
@@ -278,6 +291,48 @@ export default function EveConfiguratorSimple() {
             </div>
           </div>
         )}
+
+        {/* MOBILE CIRCULAR BUTTONS - TWO ROWS */}
+        <div className="md:hidden mb-3 space-y-3">
+          {/* First Row - 5 buttons */}
+          <div className="flex justify-center items-center gap-3">
+            {OPTIONS.slice(0, 5).map((cat) => {
+              const isActive = activeOption === cat.key;
+              return (
+                <button
+                  key={cat.key}
+                  onClick={(e) => { e.stopPropagation(); setActiveOption(isActive ? null : cat.key); }}
+                  className={`w-14 h-14 rounded-full flex items-center justify-center transition-all shadow-xl border-2 ${
+                    isActive 
+                      ? "bg-white text-black scale-110 border-white" 
+                      : "bg-white/30 backdrop-blur-md border-white/40 text-white"
+                  }`}
+                >
+                  {getIcon(cat.key)}
+                </button>
+              );
+            })}
+          </div>
+          {/* Second Row - 4 buttons */}
+          <div className="flex justify-center items-center gap-3">
+            {OPTIONS.slice(5).map((cat) => {
+              const isActive = activeOption === cat.key;
+              return (
+                <button
+                  key={cat.key}
+                  onClick={(e) => { e.stopPropagation(); setActiveOption(isActive ? null : cat.key); }}
+                  className={`w-14 h-14 rounded-full flex items-center justify-center transition-all shadow-xl border-2 ${
+                    isActive 
+                      ? "bg-white text-black scale-110 border-white" 
+                      : "bg-white/30 backdrop-blur-md border-white/40 text-white"
+                  }`}
+                >
+                  {getIcon(cat.key)}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         {/* CONFIG CARD */}
         <div className="bg-white/90 text-black rounded-xl p-3 md:p-4 shadow-lg">
@@ -324,7 +379,7 @@ export default function EveConfiguratorSimple() {
                   isActive ? "scale-110 bg-black/60" : "hover:scale-105 hover:bg-black/50"
                 }`}
               >
-                {isActive ? <X size={24} /> : getIcon(cat.key)}
+                {isActive ? "✕" : getIcon(cat.key)}
               </button>
 
               {isActive && (
@@ -352,10 +407,12 @@ export default function EveConfiguratorSimple() {
                             <span className={`text-sm font-medium ${selected ? "text-white" : "text-white/80"}`}>
                               {it.name}
                             </span>
-                            {it.price && (
+                            {it.price ? (
                               <span className="text-xs text-white/60">
                                 $ {it.price.toLocaleString()}
                               </span>
+                            ) : (
+                              <span className="text-xs text-white/60">$0.00</span>
                             )}
                           </div>
                         </div>
@@ -386,21 +443,24 @@ export default function EveConfiguratorSimple() {
         ))}
       </div>
 
-      {/* Mobile color selector - top left */}
-      <div className="md:hidden fixed left-4 top-20 z-40 flex gap-2" onClick={(e) => e.stopPropagation()}>
-        {COLORS.map((c) => (
-          <button
-            key={c}
-            onClick={() => setColor(c)}
-            className={`w-10 h-10 rounded-full border-2 shadow-lg transition-all ${
-              color === c ? "border-white scale-110" : "border-white/50"
-            }`}
-            style={{
-              backgroundColor:
-                c === "red" ? "#d62828" : c === "gold" ? "#FFD700" : "#ffffff",
-            }}
-          />
-        ))}
+      {/* Mobile color selector - top center */}
+      <div className="md:hidden fixed top-20 left-0 right-0 z-40 flex flex-col items-center gap-2" onClick={(e) => e.stopPropagation()}>
+        <p className="text-white text-sm font-medium">Pick your color</p>
+        <div className="flex gap-3">
+          {COLORS.map((c) => (
+            <button
+              key={c}
+              onClick={() => setColor(c)}
+              className={`w-12 h-12 rounded-full border-2 shadow-lg transition-all ${
+                color === c ? "border-white scale-110" : "border-white/50"
+              }`}
+              style={{
+                backgroundColor:
+                  c === "red" ? "#d62828" : c === "gold" ? "#FFD700" : "#ffffff",
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* PREORDER MODAL */}

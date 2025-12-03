@@ -96,7 +96,7 @@ export default function AboutUs() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 sm:py-32 md:py-36">
         <div ref={contentRef} className="space-y-8 text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-sm uppercase tracking-[0.25em] text-white/70 font-medium">
+          {/* <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-sm uppercase tracking-[0.25em] text-white/70 font-medium">
             <span className="h-px w-8 bg-white/40" />
             About Us
             <span className="h-px w-8 bg-white/40" />
@@ -104,20 +104,21 @@ export default function AboutUs() {
           
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
             Our <span className="text-white/80">Story</span>
-          </h2>
+          </h2> */}
           
           <div className="space-y-6 text-xl sm:text-2xl text-white/90 leading-relaxed font-light">
             <p>
-              Founded with a vision to revolutionize urban mobility, Ascendance EV was born from a simple observation: the way we move in cities needs to change.
-            </p>
+Electric vehicles should not be as expensive as the global price of batteries are trending towards Less than $100 per KWhr
+
+An average sedan carries just 1 person (the Driver) for 90% of its life and 2 people for an extra 5% of its useful life.            </p>
             
-            <p>
+            {/* <p>
               We're a team of engineers, designers, and innovators who believe that electric vehicles should be accessible to everyone—not just luxury buyers. Our mission is to create beautiful, efficient, and affordable EVs that make sense for real-world use.
             </p>
             
             <p>
               Based at Mohammed VI Polytechnic University, we combine cutting-edge research with practical engineering to build the future of sustainable transportation, one vehicle at a time.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
